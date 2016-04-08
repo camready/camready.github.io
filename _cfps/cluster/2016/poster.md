@@ -1,6 +1,7 @@
 ---
 title: IEEE Cluster 2016 (POSTER)
 venue: cluster
+location: Taipei, Taiwan
 ---
                          **** CALL FOR POSTERS ****
 

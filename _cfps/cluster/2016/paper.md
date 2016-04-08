@@ -1,6 +1,7 @@
 ---
 title: IEEE Cluster 2016
 venue: cluster
+location: Taipei, Taiwan
 ---
 
 IEEE Cluster 2016 is the 18th edition of the IEEE Cluster conference 
