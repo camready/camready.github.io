@@ -19,3 +19,16 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+
+collections:
+  cfps:
+    output: true
+    path: /cfps/:path/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "cfps"
+    values:
+      layout: "cfp"
