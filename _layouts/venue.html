@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+{% assign calls = site.cfps | where:"venue",page.venue | where:"layout","cfp" %}
+
+<ul>
+{% for call in calls %}
+  <li><a href="{{ call.url }}">{{ call.title }}</a></li>
+{% endfor %}
+</ul>
