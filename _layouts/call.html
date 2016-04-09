@@ -9,8 +9,37 @@ layout: default
   </header>
 
   <ul>
-      <li>abstract: {{ page.deadlines.abstract }}</li>
-      <li>paper: {{ page.deadlines.paper }}</li>
+
+{% if page.deadlines.abstract %}
+  <li>abstract: {{ page.deadlines.abstract | first }}
+  {% assign extensions = page.deadlines.abstract | shift %}
+  {% if extensions %}
+    <ul>
+    {% assign count = 1 %}
+    {% for extension in extensions %}
+      <li>Extension {{ count }}: {{ extension }}</li>
+    {% assign count = count | plus: 1 %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </li>
+{% endif %}
+
+{% if page.deadlines.paper %}
+  <li>paper: {{ page.deadlines.paper | first }}
+  {% assign extensions = page.deadlines.paper | shift %}
+  {% if extensions %}
+    <ul>
+    {% assign count = 1 %}
+    {% for extension in extensions %}
+      <li>Extension {{ count }}: {{ extension }}</li>
+    {% assign count = count | plus: 1 %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </li>
+{% endif %}
+
       <li>notification: {{ page.deadlines.notification }}</li>
       <li>location: {{ page.location }}</li>
   </ul>
