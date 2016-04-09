@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign calls = site.cfps | where:"venue",page.venue | where:"layout","cfp" %}
+{% assign calls = site.calls | where:"venue",page.venue | where:"layout","call" %}
 
 <ul>
 {% for call in calls %}

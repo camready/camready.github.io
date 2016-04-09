@@ -21,14 +21,14 @@ github_username:  jekyll
 markdown: kramdown
 
 collections:
-  cfps:
+  calls:
     output: true
-    path: /cfps/:path/
+    path: /calls/:path/
 
 defaults:
   -
     scope:
       path: ""
-      type: "cfps"
+      type: "calls"
     values:
-      layout: "cfp"
+      layout: "call"
