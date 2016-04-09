@@ -67,6 +67,18 @@ layout: default
   </ul>
 
   <div class="post-content" itemprop="articleBody">
+{% if page.location %}
+<iframe
+  width="400"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrF25RfDKSZ9pQ0y0PC-O0qMG3U1ZyCgg&zoom=4&q={{ page.location | uri_escape }}"
+  allowfullscreen>
+</iframe>
+{% endif %}
+  </div>
+
+  <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
 
