@@ -11,6 +11,7 @@ deadlines:
     - 2016-03-04
   notification:
     - 2016-03-12
+location: "Kyoto International Community House, Kyoto, Japan"
 ---
                      **** CALL FOR PAPERS ****
 

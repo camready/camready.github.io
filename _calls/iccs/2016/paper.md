@@ -1,6 +1,7 @@
 ---
 title: The 16th International Conference on Computational Science
 venue: iccs
+location: Catamaran Resort Hotel and Spa, San Diego, California, USA
 ---
 
 ICCS 2016
