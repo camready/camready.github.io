@@ -18,6 +18,14 @@ layout: default
     {% endfor %}
   </ul>
 
+{% assign calls = site.calls | where:"layout","call" %}
+
+<ul>
+{% for call in calls %}
+  <li><a href="{{ call.url }}">{{ call.title }}</a></li>
+{% endfor %}
+</ul>
+
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
