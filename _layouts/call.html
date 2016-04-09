@@ -11,13 +11,22 @@ layout: default
   <ul>
 
 {% if page.deadlines.abstract %}
-  <li>abstract: {{ page.deadlines.abstract | first | date: "%-d %B %Y" }}
   {% assign extensions = page.deadlines.abstract | shift %}
-  {% if extensions %}
+
+  <li>abstract: 
+  {% if extensions.size > 0 %}<strike>{% endif %}
+    {{ page.deadlines.abstract | first | date: "%-d %B %Y" }}
+  {% if extensions.size > 0 %}</strike>{% endif %}
+
+  {% if extensions.size > 0 %}
     <ul>
     {% assign count = 1 %}
     {% for extension in extensions %}
-      <li>Extension {{ count }}: {{ extension | date: "%-d %B %Y" }}</li>
+      <li>Extension {{ count }}: 
+      {% if count < extensions.size %}<strike>{% endif %}
+        {{ extension | date: "%-d %B %Y" }}
+      {% if count < extensions.size %}</strike>{% endif %}
+      </li>
     {% assign count = count | plus: 1 %}
     {% endfor %}
     </ul>
@@ -26,13 +35,22 @@ layout: default
 {% endif %}
 
 {% if page.deadlines.paper %}
-  <li>paper: {{ page.deadlines.paper | first | date: "%-d %B %Y" }}
   {% assign extensions = page.deadlines.paper | shift %}
-  {% if extensions %}
+
+  <li>paper: 
+  {% if extensions.size > 0 %}<strike>{% endif %}
+    {{ page.deadlines.paper | first | date: "%-d %B %Y" }}
+  {% if extensions.size > 0 %}</strike>{% endif %}
+
+  {% if extensions.size > 0 %}
     <ul>
     {% assign count = 1 %}
     {% for extension in extensions %}
-      <li>Extension {{ count }}: {{ extension | date: "%-d %B %Y" }}</li>
+      <li>Extension {{ count }}:
+      {% if count < extensions.size %}<strike>{% endif %}
+        {{ extension | date: "%-d %B %Y" }}
+      {% if count < extensions.size %}</strike>{% endif %}
+      </li>
     {% assign count = count | plus: 1 %}
     {% endfor %}
     </ul>
@@ -62,7 +80,7 @@ layout: default
   </li>
 {% endif %}
 
-      <li>notification: {{ page.deadlines.notification | date: "%-d %B %Y" }}</li>
+      <li>notification: {{ page.deadlines.notification | first | date: "%-d %B %Y" }}</li>
       <li>location: {{ page.location }}</li>
   </ul>
 
