@@ -82,6 +82,33 @@ layout: default
 
       <li>notification: {{ page.deadlines.notification | first | date: "%-d %B %Y" }}</li>
       <li>location: {{ page.location }}</li>
+
+{% if page.dates %}
+  <li>event dates:
+  {% assign start_year = page.dates | first | date: "%Y" %}
+  {% assign   end_year = page.dates |  last | date: "%Y" %}
+  {% if start_year == end_year %}
+    {% assign start_month = page.dates | first | date: "%B" %}
+    {% assign   end_month = page.dates |  last | date: "%B" %}
+    {% if start_month == end_month %}
+      {% assign start_day = page.dates | first | date: "%-d" %}
+      {% assign   end_day = page.dates |  last | date: "%-d" %}
+      {{ start_day }} &ndash; {{ end_day }} {{ start_month }} {{ page.dates | first | date: "%Y" }}
+    {% else %}
+      {% assign start_day = page.dates | first | date: "%-d" %}
+      {% assign   end_day = page.dates |  last | date: "%-d" %}
+      {{ start_day }} {{ start_month }} &ndash; {{ end_day}} {{ end_month }} {{ start_year }}
+    {% endif %}
+  {% else %}
+    {{ page.dates | first | date: "%-d %B %Y" }} &ndash; {{ page.dates | last | date: "%-d %B %Y" }}
+  {% endif %}
+  </li>
+{% endif %}
+
+
+
+
+
   </ul>
 
   <div class="post-content" itemprop="articleBody">
