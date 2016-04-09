@@ -3,12 +3,14 @@ title: HPDC
 venue: hpdc
 deadlines:
   abstract:
+    - 2016-01-11
   paper:
-    - paper deadline
-    - e1
-    - e2
-  rebuttal: rebuttal
-  notification: notif
+    - 2016-01-18
+  rebuttal:
+    - 2016-03-02
+    - 2016-03-04
+  notification:
+    - 2016-03-12
 ---
                      **** CALL FOR PAPERS ****
 

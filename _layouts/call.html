@@ -11,13 +11,13 @@ layout: default
   <ul>
 
 {% if page.deadlines.abstract %}
-  <li>abstract: {{ page.deadlines.abstract | first }}
+  <li>abstract: {{ page.deadlines.abstract | first | date: "%-d %B %Y" }}
   {% assign extensions = page.deadlines.abstract | shift %}
   {% if extensions %}
     <ul>
     {% assign count = 1 %}
     {% for extension in extensions %}
-      <li>Extension {{ count }}: {{ extension }}</li>
+      <li>Extension {{ count }}: {{ extension | date: "%-d %B %Y" }}</li>
     {% assign count = count | plus: 1 %}
     {% endfor %}
     </ul>
@@ -26,13 +26,13 @@ layout: default
 {% endif %}
 
 {% if page.deadlines.paper %}
-  <li>paper: {{ page.deadlines.paper | first }}
+  <li>paper: {{ page.deadlines.paper | first | date: "%-d %B %Y" }}
   {% assign extensions = page.deadlines.paper | shift %}
   {% if extensions %}
     <ul>
     {% assign count = 1 %}
     {% for extension in extensions %}
-      <li>Extension {{ count }}: {{ extension }}</li>
+      <li>Extension {{ count }}: {{ extension | date: "%-d %B %Y" }}</li>
     {% assign count = count | plus: 1 %}
     {% endfor %}
     </ul>
@@ -40,7 +40,29 @@ layout: default
   </li>
 {% endif %}
 
-      <li>notification: {{ page.deadlines.notification }}</li>
+{% if page.deadlines.rebuttal %}
+  <li>rebuttal period:
+  {% assign start_year = page.deadlines.rebuttal | first | date: "%Y" %}
+  {% assign   end_year = page.deadlines.rebuttal |  last | date: "%Y" %}
+  {% if start_year == end_year %}
+    {% assign start_month = page.deadlines.rebuttal | first | date: "%B" %}
+    {% assign   end_month = page.deadlines.rebuttal |  last | date: "%B" %}
+    {% if start_month == end_month %}
+      {% assign start_day = page.deadlines.rebuttal | first | date: "%-d" %}
+      {% assign   end_day = page.deadlines.rebuttal |  last | date: "%-d" %}
+      {{ start_day }} &ndash; {{ end_day }} {{ start_month }} {{ page.deadlines.rebuttal | first | date: "%Y" }}
+    {% else %}
+      {% assign start_day = page.deadlines.rebuttal | first | date: "%-d" %}
+      {% assign   end_day = page.deadlines.rebuttal |  last | date: "%-d" %}
+      {{ start_day }} {{ start_month }} &ndash; {{ end_day}} {{ end_month }} {{ start_year }}
+    {% endif %}
+  {% else %}
+    {{ page.deadlines.rebuttal | first | date: "%-d %B %Y" }} &ndash; {{ page.deadlines.rebuttal | last | date: "%-d %B %Y" }}
+  {% endif %}
+  </li>
+{% endif %}
+
+      <li>notification: {{ page.deadlines.notification | date: "%-d %B %Y" }}</li>
       <li>location: {{ page.location }}</li>
   </ul>
 
