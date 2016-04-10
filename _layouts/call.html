@@ -1,35 +1,162 @@
 ---
 layout: default
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>{{ page.title }}</h1>
 
-  <ul>
+<p>
+{% if page.dates %}
+  {% assign start_year = page.dates | first | date: "%Y" %}
+  {% assign   end_year = page.dates |  last | date: "%Y" %}
+  {% if start_year == end_year %}
+    {% assign start_month = page.dates | first | date: "%B" %}
+    {% assign   end_month = page.dates |  last | date: "%B" %}
+    {% if start_month == end_month %}
+      {% assign start_day = page.dates | first | date: "%-d" %}
+      {% assign   end_day = page.dates |  last | date: "%-d" %}
+      {{ start_day }} &ndash; {{ end_day }} {{ start_month }} {{ page.dates | first | date: "%Y" }}
+    {% else %}
+      {% assign start_day = page.dates | first | date: "%-d" %}
+      {% assign   end_day = page.dates |  last | date: "%-d" %}
+      {{ start_day }} {{ start_month }} &ndash; {{ end_day}} {{ end_month }} {{ start_year }}
+    {% endif %}
+  {% else %}
+    {{ page.dates | first | date: "%-d %B %Y" }} &ndash; {{ page.dates | last | date: "%-d %B %Y" }}
+  {% endif %}
+{% endif %}<br/>Tokyo, Japan
+</p>
 
+            </div>
+            <div class="col-md-4">
+
+<h3>Important Dates</h3>
+<table class="table table-bordered table-condensed">
 {% if page.deadlines.abstract %}
   {% assign extensions = page.deadlines.abstract | shift %}
+    <tr>
+        <td>Abstract</td>
+        <td>
 
-  <li>abstract: 
   {% if extensions.size > 0 %}<strike>{% endif %}
     {{ page.deadlines.abstract | first | date: "%-d %B %Y" }}
   {% if extensions.size > 0 %}</strike>{% endif %}
 
   {% if extensions.size > 0 %}
-    <ul>
     {% assign count = 1 %}
     {% for extension in extensions %}
-      <li>Extension {{ count }}: 
+      {% if count < extensions.size %}<strike>{% endif %}
+        <br/>{{ extension | date: "%-d %B %Y" }}
+      {% if count < extensions.size %}</strike>{% endif %}
+    {% assign count = count | plus: 1 %}
+    {% endfor %}
+  {% endif %}
+
+        </td>
+    </tr>
+{% endif %}
+
+{% if page.deadlines.paper %}
+  {% assign extensions = page.deadlines.paper | shift %}
+    <tr>
+        <td>Paper</td>
+        <td>
+
+  {% if extensions.size > 0 %}<strike>{% endif %}
+    {{ page.deadlines.paper | first | date: "%-d %B %Y" }}
+  {% if extensions.size > 0 %}</strike>{% endif %}
+
+  {% if extensions.size > 0 %}
+    {% assign count = 1 %}
+    {% for extension in extensions %}
+      {% if count < extensions.size %}<strike>{% endif %}
+        <br/>{{ extension | date: "%-d %B %Y" }}
+      {% if count < extensions.size %}</strike>{% endif %}
+    {% assign count = count | plus: 1 %}
+    {% endfor %}
+  {% endif %}
+
+        </td>
+    </tr>
+{% endif %}
+
+{% if page.deadlines.rebuttal %}
+    <tr>
+        <td>Rebuttal</td>
+        <td>
+
+  {% assign start_year = page.deadlines.rebuttal | first | date: "%Y" %}
+  {% assign   end_year = page.deadlines.rebuttal |  last | date: "%Y" %}
+  {% if start_year == end_year %}
+    {% assign start_month = page.deadlines.rebuttal | first | date: "%B" %}
+    {% assign   end_month = page.deadlines.rebuttal |  last | date: "%B" %}
+    {% if start_month == end_month %}
+      {% assign start_day = page.deadlines.rebuttal | first | date: "%-d" %}
+      {% assign   end_day = page.deadlines.rebuttal |  last | date: "%-d" %}
+      {{ start_day }} &ndash; {{ end_day }} {{ start_month }} {{ page.deadlines.rebuttal | first | date: "%Y" }}
+    {% else %}
+      {% assign start_day = page.deadlines.rebuttal | first | date: "%-d" %}
+      {% assign   end_day = page.deadlines.rebuttal |  last | date: "%-d" %}
+      {{ start_day }} {{ start_month }} &ndash; {{ end_day}} {{ end_month }} {{ start_year }}
+    {% endif %}
+  {% else %}
+    {{ page.deadlines.rebuttal | first | date: "%-d %B %Y" }} &ndash; {{ page.deadlines.rebuttal | last | date: "%-d %B %Y" }}
+  {% endif %}
+
+        </td>
+    </tr>
+{% endif %}
+
+
+{% if page.deadlines.notification %}
+  {% assign extensions = page.deadlines.notification | shift %}
+    <tr>
+        <td>Notification</td>
+        <td>
+
+  {% if extensions.size > 0 %}<strike>{% endif %}
+    {{ page.deadlines.notification | first | date: "%-d %B %Y" }}
+  {% if extensions.size > 0 %}</strike>{% endif %}
+
+  {% if extensions.size > 0 %}
+    {% assign count = 1 %}
+    {% for extension in extensions %}
+      {% if count < extensions.size %}<strike>{% endif %}
+        <br/>{{ extension | date: "%-d %B %Y" }}
+      {% if count < extensions.size %}</strike>{% endif %}
+    {% assign count = count | plus: 1 %}
+    {% endfor %}
+  {% endif %}
+
+        </td>
+    </tr>
+{% endif %}
+
+</table>
+
+<!--
+  <ul class="list-group pull-right">
+
+{% if page.deadlines.abstract %}
+  {% assign extensions = page.deadlines.abstract | shift %}
+
+  <li class="list-group-item">abstract: 
+  {% if extensions.size > 0 %}<strike>{% endif %}
+    {{ page.deadlines.abstract | first | date: "%-d %B %Y" }}
+  {% if extensions.size > 0 %}</strike>{% endif %}
+
+  {% if extensions.size > 0 %}
+    {% assign count = 1 %}
+    {% for extension in extensions %}
+      <br/>Extension {{ count }}: 
       {% if count < extensions.size %}<strike>{% endif %}
         {{ extension | date: "%-d %B %Y" }}
       {% if count < extensions.size %}</strike>{% endif %}
-      </li>
     {% assign count = count | plus: 1 %}
     {% endfor %}
-    </ul>
   {% endif %}
   </li>
 {% endif %}
@@ -37,29 +164,26 @@ layout: default
 {% if page.deadlines.paper %}
   {% assign extensions = page.deadlines.paper | shift %}
 
-  <li>paper: 
+  <li class="list-group-item">paper: 
   {% if extensions.size > 0 %}<strike>{% endif %}
     {{ page.deadlines.paper | first | date: "%-d %B %Y" }}
   {% if extensions.size > 0 %}</strike>{% endif %}
 
   {% if extensions.size > 0 %}
-    <ul>
     {% assign count = 1 %}
     {% for extension in extensions %}
-      <li>Extension {{ count }}:
+      <br/>Extension {{ count }}:
       {% if count < extensions.size %}<strike>{% endif %}
         {{ extension | date: "%-d %B %Y" }}
       {% if count < extensions.size %}</strike>{% endif %}
-      </li>
     {% assign count = count | plus: 1 %}
     {% endfor %}
-    </ul>
   {% endif %}
   </li>
 {% endif %}
 
 {% if page.deadlines.rebuttal %}
-  <li>rebuttal period:
+  <li class="list-group-item">rebuttal period:
   {% assign start_year = page.deadlines.rebuttal | first | date: "%Y" %}
   {% assign   end_year = page.deadlines.rebuttal |  last | date: "%Y" %}
   {% if start_year == end_year %}
@@ -80,11 +204,10 @@ layout: default
   </li>
 {% endif %}
 
-      <li>notification: {{ page.deadlines.notification | first | date: "%-d %B %Y" }}</li>
-      <li>location: {{ page.location }}</li>
+      <li class="list-group-item">notification: {{ page.deadlines.notification | first | date: "%-d %B %Y" }}</li>
 
 {% if page.dates %}
-  <li>event dates:
+  <li class="list-group-item">event dates:
   {% assign start_year = page.dates | first | date: "%Y" %}
   {% assign   end_year = page.dates |  last | date: "%Y" %}
   {% if start_year == end_year %}
@@ -105,26 +228,44 @@ layout: default
   </li>
 {% endif %}
 
-
-
-
-
   </ul>
+-->
+    </div>
+</div>
+    </div>
+</div>
 
-  <div class="post-content" itemprop="articleBody">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>International Symposium on High-Performance Parallel and Distributed Computing</h3>
+            {{ content }}
+        </div>
+        <div class="col-md-4">
+
+<h3>Location</h3>
 {% if page.location %}
+  {% assign loc = page.location %}
+  {% if page.location.place %}
+    {% assign loc = page.location.place %}
+  {% endif %}
+  {% if page.location.city %}
+    {% if page.location.place %}
+      {% assign loc = loc | append: ", " %}
+      {% assign loc = loc | append: page.location.city %}
+    {% else %}
+      {% assign loc = page.location.city %}
+    {% endif %}
+  {% endif %}
 <iframe
-  width="400"
-  height="250"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyACk1C7DJMlKA39Yt4KFR8I4MhHjHM4GJ8&zoom=4&q={{ page.location | uri_escape }}"
-  allowfullscreen>
+    width="400"
+    height="250"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyACk1C7DJMlKA39Yt4KFR8I4MhHjHM4GJ8&zoom=4&q={{ loc | uri_escape }}"
+    allowfullscreen>
 </iframe>
 {% endif %}
-  </div>
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
-</article>
+        </div>
+    </div>
+</div>

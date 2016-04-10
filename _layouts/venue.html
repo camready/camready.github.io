@@ -2,6 +2,9 @@
 layout: default
 ---
 
+
+{{ page.full_name }}
+
 {% assign calls = site.calls | where:"venue",page.venue | where:"layout","call" %}
 
 <ul>

@@ -1,24 +1,25 @@
 ---
-title: HPDC
+title: HPDC 2016
 venue: hpdc
+website: http://www.hpdc.org/2016/
 deadlines:
   abstract:
     - 2016-01-11
-    - 2016-01-11
   paper:
     - 2016-01-18
-    - 2016-01-11
-    - 2016-01-11
   rebuttal:
     - 2016-03-02
     - 2016-03-04
   notification:
     - 2016-03-12
-location: "Kyoto International Community House, Kyoto, Japan"
+location:
+  city: Kyoto, Japan
+  place: Kyoto International Community House
 dates:
   - 2016-05-31
   - 2016-06-04
 ---
+```
                      **** CALL FOR PAPERS ****
 
                  The 25th International ACM Symposium on
@@ -196,3 +197,4 @@ Karsten Schwan,         Georgia Tech, USA
 Doug Thain,             University of Notre Dame, USA
 Jon Weissman,           University of Minnesota, USA (Chair)
 Dongyan Xu,             Purdue University, USA
+```
