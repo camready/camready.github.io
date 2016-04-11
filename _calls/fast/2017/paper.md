@@ -1,5 +1,6 @@
 ---
 venue: fast
+title: FAST 2017
 location:
   city: Santa Clara, California
 dates:
