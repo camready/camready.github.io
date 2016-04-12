@@ -13,7 +13,7 @@ dates:
   - 2016-11-04
 location:
   city: Savannah, Georgia
-  place: Westin Savannah Harbor Golf Resort & Spa
+  place: Westin Savannah Harbor Golf Resort and Spa
 ---
 
 ```
